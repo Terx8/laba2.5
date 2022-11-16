@@ -1,9 +1,13 @@
 #include <iostream>
+#include <string>
+
 #define NAME 0
 #define NUMBER 1
 #define TYPE 2
 
 using namespace std;
+
+
 
 class aeroflot
 {
@@ -12,61 +16,41 @@ class aeroflot
 
 public:
 
-	aeroflot()
+	aeroflot();
+
+	string getName();
+	string getNumber();
+	string getType();
+	aeroflot* getNextPtr();
+
+	void setName(string str);
+	void setNumber(string str);
+	void setType(string str);
+	void setNextPtr(aeroflot* p);
+
+	friend std::ostream& operator<<(std::ostream& os, const aeroflot& p)
 	{
-		cout << "aeroflot constructor called" << endl;
+		return os << "number: " << p.prop[NUMBER] << " place: " << p.prop[NAME] << " type: " << p.prop[TYPE] << endl;
 	}
 
-	string getName()
+	friend std::istream& operator>>(std::istream& in, aeroflot& p)
 	{
-		return prop[NAME];
+		std::cout << "number: ";
+		in.clear();
+		in.ignore();
+		getline(in, p.prop[NUMBER]);
+
+		std::cout << "place: ";
+		in.clear();
+		getline(in, p.prop[NAME]);
+
+		std::cout << "type: ";
+		in.clear();
+		getline(in, p.prop[TYPE]);
+
+		in.sync();
+
+		return in;
 	}
-	string getNumber()
-	{
-		return prop[NUMBER];
-	}
-	string getType()
-	{
-		return prop[TYPE];
-	}
-
-	void setName(string str)
-	{
-		prop[NAME] = str;
-	}
-
-	void setNumber(string str)
-	{
-		prop[NUMBER] = str;
-	}
-
-	void setType(string str)
-	{
-		prop[TYPE] = str;
-	}
-
-
-};
-
-
-class myList
-{
-	int size;
-	aeroflot* HEAD;
-	aeroflot* LAST;
-
-public:
-
-	myList()
-	{
-		cout << "myList constructor called" << endl;
-		size = 0;
-		HEAD = nullptr;
-		LAST = HEAD;
-	}
-
-
-
-
 
 };

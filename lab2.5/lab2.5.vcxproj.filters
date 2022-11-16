@@ -21,9 +21,15 @@
     <ClCompile Include="aeroflot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mylist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aeroflot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
