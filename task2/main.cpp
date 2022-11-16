@@ -12,7 +12,7 @@ bool isDeviderExt(string ch)
 	return (ch == "." || ch == "!" || ch == "?" || ch == "\"" || ch == " " || ch == "\t" || ch == "\n");
 }
 
-int main()
+void readFile()
 {
 	ifstream fin;
 	string filename = "text.txt";
@@ -20,8 +20,7 @@ int main()
 	fin.open(filename);
 	if (!fin.is_open())
 	{
-		cout << "no file such as " << filename << " was found" << endl;
-		return 0;
+		throw "EXEPTION: no file such as " + filename + " was found";
 	}
 
 	string str[3];
@@ -31,7 +30,7 @@ int main()
 	while (!fin.eof() && count < 3)
 	{
 		fin.get(ch);
-		c = ch; 
+		c = ch;
 
 		if (!isDeviderExt(c))
 		{
@@ -44,17 +43,30 @@ int main()
 				{
 					count++;
 					break;
-				}	
+				}
 			}
 		}
 	}
 
 	fin.close();
-	
+
 	cout << "'" << str[2] << "'" << endl;
 	cout << "'" << str[1] << "'" << endl;
 	cout << "'" << str[0] << "'" << endl;
-	
+}
+
+
+int main()
+{
+	try {
+		readFile();
+
+	}
+	catch(string m)
+	{
+		cout << m << endl;
+
+	}
 
 	return 0;
 }
